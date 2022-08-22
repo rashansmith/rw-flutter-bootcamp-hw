@@ -4,6 +4,7 @@ Link to About Me Repo: https://github.com/rashansmith/rw-flutter-bootcamp-hw1/bl
 
 
 ### Demo
-![updated_hw_demo](https://user-images.githubusercontent.com/6632748/186006372-6a9e021a-84d9-492d-8c9b-5ca0f448985e.gif)
+![hw1-demo](https://user-images.githubusercontent.com/6632748/186008185-a2369659-9077-462b-bc11-9febb109a945.gif)
+
 
 
