@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'pokemon.dart';
 
@@ -40,15 +42,7 @@ class _PokemonDetailsState extends State<PokemonDetails> {
             ),
 
             Text(
-              widget.pokemon.name,
-              style: const TextStyle(fontSize: 18),
-            ),
-            Text(
-              widget.pokemon.type,
-              style: const TextStyle(fontSize: 18),
-            ),
-            Text(
-              widget.pokemon.caughtLocation,
+              'Name: ${widget.pokemon.name}',
               style: const TextStyle(fontSize: 18),
             ),
 
@@ -59,7 +53,11 @@ class _PokemonDetailsState extends State<PokemonDetails> {
                 children: <Widget>[
 
                   Text(
-                    widget.pokemon.name,
+                    'Type:  ${widget.pokemon.type}',
+                    style: const TextStyle(fontSize: 18),
+                  ),
+                  Text(
+                    'Location caught at:  ${widget.pokemon.caughtLocation}',
                     style: const TextStyle(fontSize: 18),
                   ),
               ],
