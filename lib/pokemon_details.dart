@@ -41,16 +41,22 @@ class _PokemonDetailsState extends State<PokemonDetails> {
               height: 4,
             ),
 
-            Text(
-              'Name: ${widget.pokemon.name}',
-              style: const TextStyle(fontSize: 18),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+              child: Text(
+                'Name: ${widget.pokemon.name}',
+                style: const TextStyle(fontSize: 24),
+              ),
             ),
 
 
             Expanded(
-              // 8
               child: Column(
                 children: <Widget>[
+                  Text(
+                    'Pokedex Number: ${widget.pokemon.number}',
+                    style: const TextStyle(fontSize: 18),
+                  ),
 
                   Text(
                     'Type:  ${widget.pokemon.type}',

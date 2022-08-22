@@ -1,5 +1,5 @@
 class Pokemon {
-  int number;
+  double number;
   String name;
   String type;
   String caughtLocation;

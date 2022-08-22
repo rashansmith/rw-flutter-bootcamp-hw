@@ -60,11 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
           child: ListView.builder(
               itemCount: Pokemon.pokemonList.length,
               itemBuilder: (BuildContext context, int index) {
-                // 7
                 return GestureDetector(
-                  // 8
                   onTap: () {
-                    // 9
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -74,7 +71,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     );
                   },
-                  // 11
                   child: buildPokemonCard(Pokemon.pokemonList[index]),
                 );
               }
