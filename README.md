@@ -8,3 +8,12 @@ Link to About Me Repo: https://github.com/rashansmith/rw-flutter-bootcamp-hw1/bl
 
 
 
+
+# HW2 - Add Pokedex Login page
+
+### Notes:
+- How to add custom fonts: https://docs.flutter.dev/cookbook/design/fonts
+
+
+
+
