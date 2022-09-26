@@ -58,5 +58,20 @@ class Pokemon {
     ),
 
   ];
+
+  static List<Pokemon> searchPokemonByName(String search) {
+    List<Pokemon> pList = [];
+
+    if(search.isEmpty) {
+      return pokemonList;
+    } else {
+      for(int i = 0; i < pokemonList.length; i++) {
+        if(search == pokemonList[i].name.toString()) {
+          pList.add(pokemonList[i]);
+        }
+      }
+    }
+    return pList;
+  }
 }
 
