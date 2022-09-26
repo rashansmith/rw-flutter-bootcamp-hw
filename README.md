@@ -1,7 +1,3 @@
-# HW1 - Pokedex
-
-Link to About Me Repo: https://github.com/rashansmith/rw-flutter-bootcamp-hw1/blob/main/README.md
-
 # HW3 
 ### Add Form Validation Demo
 ![hw3-form-val](https://user-images.githubusercontent.com/6632748/192352239-2d26f4a5-5c8e-4ed0-8682-91cfd273655a.gif)
@@ -21,6 +17,10 @@ Link to About Me Repo: https://github.com/rashansmith/rw-flutter-bootcamp-hw1/bl
 - Initial Login Page designs in Figma:
   <img width="1270" alt="Screen Shot 2022-08-29 at 12 10 58 AM" src="https://user-images.githubusercontent.com/6632748/187121558-df3d7cb6-08d3-4ad9-b8a3-368e312b30a8.png">
 
+
+# HW1 - Pokedex
+
+Link to About Me Repo: https://github.com/rashansmith/rw-flutter-bootcamp-hw1/blob/main/README.md
 
 # HW1
 ### Demo
