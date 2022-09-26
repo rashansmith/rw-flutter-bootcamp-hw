@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'pokemon.dart';
 import 'pokemon_details.dart';
 import 'package:material_color_generator/material_color_generator.dart';
+import 'login_signin.dart';
+import 'customSearchDelegate.dart';
 
 void main() {
   runApp(const PokemonApp());
@@ -54,134 +56,83 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Icon customIcon = const Icon(Icons.search);
+  Widget customSearchBar = const Text('Pokedex');
+  //static String searchString = 'Pikachu';
+  //List<Pokemon> currPokemonList = Pokemon.searchPokemonByName(searchString);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.fromLTRB(20, 30, 20, 40),
-                child: Text(
-                  'Pokedex',
-                  style: const TextStyle(
-                    fontSize: 50.0,
-                    fontWeight: FontWeight.w700,
-                    fontFamily: 'KosugiMaru',
-                    color: Color.fromARGB(255, 57, 75, 215),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(50, 0, 50, 60),
-                child:
-                    Image(image: AssetImage('assets/pokemon_transparent.png')),
-              ),
-              Padding(
-                padding: EdgeInsets.all(10),
-                child: TextField(
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Email',
-                      hintText: 'Eg. pikachu@gmail.com'),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(10),
-                child: TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Password',
-                      hintText: 'Eg. **********'),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return displayPokemon(context);
-                        },
-                      ),
-                    );
-                  },
-                  style: ButtonStyle(
-                      padding: MaterialStateProperty.all<EdgeInsets>(
-                          EdgeInsets.fromLTRB(50, 15, 50, 15)),
-                      backgroundColor: MaterialStateProperty.all(
-                          Color.fromARGB(255, 57, 75, 215))),
-                  child: Text(
-                    'Login',
-                    style: TextStyle(color: Colors.white, fontSize: 25),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+    return Login(w: displayPokemon);
   }
 
-  Widget buildPokemonCard(Pokemon pokemon) {
-    return Card(
-      elevation: 2.0,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: <Widget>[
-            Image(image: AssetImage(pokemon.imageUrl)),
-            const SizedBox(
-              height: 8.0,
-            ),
-            Text(
-              pokemon.name,
-              style: const TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.w700,
-                fontFamily: 'Sans Serif',
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
+  // Widget buildPokemonCard(Pokemon pokemon) {
+  //   return Card(
+  //     elevation: 2.0,
+  //     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+  //     child: Padding(
+  //       padding: const EdgeInsets.all(10.0),
+  //       child: Column(
+  //         children: <Widget>[
+  //           Image(image: AssetImage(pokemon.imageUrl)),
+  //           const SizedBox(
+  //             height: 2.0,
+  //           ),
+  //           Text(
+  //             pokemon.name,
+  //             style: const TextStyle(
+  //               fontSize: 20.0,
+  //               fontWeight: FontWeight.w700,
+  //               fontFamily: 'Sans Serif',
+  //             ),
+  //           )
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 
   Widget displayPokemon(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+          title: customSearchBar,
+          actions: [
+            IconButton(
+              onPressed: () {
+                showSearch(
+                  context: context,
+                  delegate: CustomSearchDelegate(),);
+              },
+              icon: customIcon,
+            )
+          ],
+
       ),
       body: SafeArea(
-          child: ListView.builder(
-              itemCount: Pokemon.pokemonList.length,
-              itemBuilder: (BuildContext context, int index) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return PokemonDetails(
-                              pokemon: Pokemon.pokemonList[index]);
-                        },
-                      ),
-                    );
-                  },
-                  child: buildPokemonCard(Pokemon.pokemonList[index]),
-                );
-              })),
+          child: GridView.builder(
+            padding: const EdgeInsets.all(2),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            ),
+            itemCount: Pokemon.pokemonList.length,
+            itemBuilder: (BuildContext context, int index) {
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return PokemonDetails(
+                            pokemon: Pokemon.pokemonList[index]);
+                      },
+                    ),
+                  );
+                },
+                child: CustomSearchDelegate.buildPokemonCard(Pokemon.pokemonList[index]),
+              );
+            }
+            ),
+      ),
     );
   }
 }
